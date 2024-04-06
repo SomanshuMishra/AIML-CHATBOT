@@ -1,7 +1,7 @@
-package com.aimlpolestar.aimlPolestar.controller;
+package com.aimlpolestar.aimlPolestar.profile.controller;
 
-import com.aimlpolestar.aimlPolestar.model.UserDetails;
-import com.aimlpolestar.aimlPolestar.services.UserService;
+import com.aimlpolestar.aimlPolestar.profile.model.UserDetails;
+import com.aimlpolestar.aimlPolestar.profile.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +30,11 @@ public class UserController {
         return userService.findAllUserDetails();
     }
 
-    @GetMapping ("/mobno/{mobno}")
-    public ResponseEntity<UserDetails> findByMobno (@PathVariable String mobno) {
-        Optional<UserDetails> userByMobno = userService.findByMobno(mobno);
-        if (userByMobno.isPresent()) {
-            return new ResponseEntity<UserDetails>(userByMobno.get(), HttpStatus.OK);
+    @GetMapping ("/id/{id}")
+    public ResponseEntity<UserDetails> findById (@PathVariable String id) {
+        Optional<UserDetails> userById = userService.findById(id);
+        if (userById.isPresent()) {
+            return new ResponseEntity<UserDetails>(userById.get(), HttpStatus.OK);
         }
         return new ResponseEntity<UserDetails>(HttpStatus.NOT_FOUND);
     }

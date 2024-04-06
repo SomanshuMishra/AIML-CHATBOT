@@ -1,7 +1,7 @@
-package com.aimlpolestar.aimlPolestar.controller;
+package com.aimlpolestar.aimlPolestar.chat.controller;
 
-import com.aimlpolestar.aimlPolestar.model.SessionDetails;
-import com.aimlpolestar.aimlPolestar.services.ChatHistoryService;
+import com.aimlpolestar.aimlPolestar.chat.model.SessionDetails;
+import com.aimlpolestar.aimlPolestar.chat.service.ChatHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +29,7 @@ public class ChatHistoryController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save the chat history");
         }
     }
+    
+    
 
 }

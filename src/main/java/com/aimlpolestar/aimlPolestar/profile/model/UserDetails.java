@@ -1,4 +1,4 @@
-package com.aimlpolestar.aimlPolestar.model;
+package com.aimlpolestar.aimlPolestar.profile.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,17 @@ import lombok.Data;
 @Table(name = "users")
 public class UserDetails {
 
+    // Add three more fields
+    // id and relation and parent_user
     @Id
+    @Column (name = "id", unique = true)
+    private String id;
+
+    private String relation;
+
+
+    private String parent_user;
+
     @Column(name = "mobno", unique = true)
     private String mobno;
 

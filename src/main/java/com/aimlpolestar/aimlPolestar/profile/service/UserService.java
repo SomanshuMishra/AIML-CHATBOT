@@ -1,7 +1,7 @@
-package com.aimlpolestar.aimlPolestar.services;
+package com.aimlpolestar.aimlPolestar.profile.service;
 
-import com.aimlpolestar.aimlPolestar.model.UserDetails;
-import com.aimlpolestar.aimlPolestar.repository.UserRepository;
+import com.aimlpolestar.aimlPolestar.profile.model.UserDetails;
+import com.aimlpolestar.aimlPolestar.profile.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -23,10 +23,10 @@ public class UserService {
 
     // Save the user with validation for existing user (using mobno) and mobile number length
     public ResponseEntity<String> signUpUser(UserDetails userDetails) {
-        // Check for existing user by mobno before saving
-        Optional<UserDetails> existingUser = userRepository.findByMobno(userDetails.getMobno());
+        // Check for existing user by id before saving
+        Optional<UserDetails> existingUser = userRepository.findById(userDetails.getId());
         if (existingUser.isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with mobile number '" + userDetails.getMobno() + "' already exists.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with '" + userDetails.getId() + "' already exists.");
         }
 
         // Validate mobile number length
@@ -48,9 +48,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    // find the user by mobile number
-    public Optional<UserDetails> findByMobno (String mobno) {
-        return userRepository.findById(mobno);
+    // find by id
+    public Optional<UserDetails> findById (String id) {
+        return userRepository.findById(id);
     }
 }
 
