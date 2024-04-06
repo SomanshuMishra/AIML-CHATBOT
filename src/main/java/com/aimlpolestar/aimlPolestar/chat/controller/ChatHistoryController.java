@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ChatHistoryController {
 
+    @Autowired
     private final ChatHistoryService chatHistoryService;
 
-    @Autowired
     public ChatHistoryController(ChatHistoryService chatHistoryService) {
         this.chatHistoryService = chatHistoryService;
     }
+
 
     @PostMapping("/chathistory")
     public ResponseEntity<String> saveChatHistory(@RequestBody SessionDetails sessionDetails) {
@@ -28,4 +29,5 @@ public class ChatHistoryController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save the chat history");
         }
     }
+
 }

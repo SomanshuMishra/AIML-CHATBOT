@@ -21,12 +21,17 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // Save the user with validation for existing user (using mobno)
+    // Save the user with validation for existing user (using mobno) and mobile number length
     public ResponseEntity<String> signUpUser(UserDetails userDetails) {
         // Check for existing user by mobno before saving
         Optional<UserDetails> existingUser = userRepository.findByMobno(userDetails.getMobno());
         if (existingUser.isPresent()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with mobile number '" + userDetails.getMobno() + "' already exists.");
+        }
+
+        // Validate mobile number length
+        if (userDetails.getMobno().length() != 10) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mobile number must be exactly 10 digits long.");
         }
 
         try {
@@ -42,4 +47,10 @@ public class UserService {
     public List<UserDetails> findAllUserDetails() {
         return userRepository.findAll();
     }
+
+    // find the user by mobile number
+    public Optional<UserDetails> findByMobno (String mobno) {
+        return userRepository.findById(mobno);
+    }
 }
+
