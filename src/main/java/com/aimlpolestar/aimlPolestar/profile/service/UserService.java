@@ -52,5 +52,45 @@ public class UserService {
     public Optional<UserDetails> findById (String id) {
         return userRepository.findById(id);
     }
+
+
+    // update the user details
+    public ResponseEntity<String> updateUser(String id, UserDetails userDetails) {
+        // check if the user exists or not
+        Optional<UserDetails> existingUser = userRepository.findById(id);
+
+        // if present
+        if (existingUser.isPresent()) {
+
+            UserDetails updatedUser = existingUser.get();
+            updatedUser.setMobno(userDetails.getMobno());
+            updatedUser.setFname(userDetails.getFname());
+            updatedUser.setLname(userDetails.getLname());
+            updatedUser.setAge(userDetails.getAge());
+            updatedUser.setSex(userDetails.getSex());
+            updatedUser.setPasswd(userDetails.getPasswd());
+
+
+            // then update the updated details
+            userRepository.save(updatedUser);
+            return new ResponseEntity<>("User details updated successfully", HttpStatus.OK);
+        } else {
+            // if not present then return with an error
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+    }
+    public String changeActiveStatusById(String id, String newActiveStatus) {
+        UserDetails userDetails = userRepository.findById(id).orElse(null);
+        if (userDetails != null) {
+            userDetails.setActive(newActiveStatus);
+            userRepository.save(userDetails);
+            return "Active status updated successfully for user with id: " + id;
+        } else {
+            return "User with id: " + id + " not found";
+        }
+    }
+
+
+
 }
 

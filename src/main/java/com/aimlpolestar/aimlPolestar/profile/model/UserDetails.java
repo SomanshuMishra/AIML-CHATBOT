@@ -4,12 +4,18 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Data;
+
 
 @Data
 @Entity
 @Table(name = "users")
 public class UserDetails {
+
+    public UserDetails () {
+        this.setActive("Y");
+    }
 
     // Add three more fields
     // id and relation and parent_user
@@ -18,6 +24,8 @@ public class UserDetails {
     private String id;
 
     private String relation;
+
+
 
 
     private String parent_user;
@@ -42,4 +50,9 @@ public class UserDetails {
 
     @Column(name = "passwd")
     private String passwd;
+
+    @Column (name = "active")
+    private String active = "Y";
+
+
 }
