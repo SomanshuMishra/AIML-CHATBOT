@@ -30,26 +30,26 @@ public class UserController {
         return userService.findAllUserDetails();
     }
 
-    @GetMapping ("/id/{id}")
-    public ResponseEntity<UserDetails> findById (@PathVariable String id) {
-        Optional<UserDetails> userById = userService.findById(id);
-        if (userById.isPresent()) {
-            return new ResponseEntity<UserDetails>(userById.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<UserDetails>(HttpStatus.NOT_FOUND);
-    }
+//    @GetMapping ("/id/{id}")
+//    public ResponseEntity<UserDetails> findById (@PathVariable String id) {
+//        Optional<UserDetails> userById = userService.findById(id);
+//        if (userById.isPresent()) {
+//            return new ResponseEntity<UserDetails>(userById.get(), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<UserDetails>(HttpStatus.NOT_FOUND);
+//    }
 
     // update the user
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateDetails(@PathVariable String id, @RequestBody UserDetails userDetails) {
-        ResponseEntity<String> response = userService.updateUser(id, userDetails);
-        return response;
-    }
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<String> updateDetails(@PathVariable String id, @RequestBody UserDetails userDetails) {
+//        ResponseEntity<String> response = userService.updateUser(id, userDetails);
+//        return response;
+//    }
 
-    @PutMapping("/change_active_status")
-    public ResponseEntity<String> changeActiveStatusById(@RequestBody UserDetails userDetails) {
-        String message = userService.changeActiveStatusById(userDetails.getId(), userDetails.getActive());
-        return ResponseEntity.ok(message);
-    }
+//    @PutMapping("/change_active_status")
+//    public ResponseEntity<String> changeActiveStatusById(@RequestBody UserDetails userDetails) {
+//        String message = userService.changeActiveStatusById(userDetails.getId(), userDetails.getActive());
+//        return ResponseEntity.ok(message);
+//    }
 
 }

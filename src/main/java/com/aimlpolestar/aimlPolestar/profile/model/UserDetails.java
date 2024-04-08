@@ -2,9 +2,9 @@ package com.aimlpolestar.aimlPolestar.profile.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Builder;
 import lombok.Data;
 
 
@@ -20,8 +20,10 @@ public class UserDetails {
     // Add three more fields
     // id and relation and parent_user
     @Id
-    @Column (name = "id", unique = true)
-    private String id;
+    @Column(name = "id")
+    @GeneratedValue
+    private int id;
+
 
     private String relation;
 
@@ -34,7 +36,8 @@ public class UserDetails {
     private String mobno;
 
     @Column(name = "primaryuser")
-    private int primaryuser;
+    private String primaryuser;
+
 
     @Column(name = "fname")
     private String fname;

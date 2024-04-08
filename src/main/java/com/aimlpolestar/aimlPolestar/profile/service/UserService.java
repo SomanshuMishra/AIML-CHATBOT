@@ -24,15 +24,15 @@ public class UserService {
     // Save the user with validation for existing user (using mobno) and mobile number length
     public ResponseEntity<String> signUpUser(UserDetails userDetails) {
         // Check for existing user by id before saving
-        Optional<UserDetails> existingUser = userRepository.findById(userDetails.getId());
-        if (existingUser.isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with '" + userDetails.getId() + "' already exists.");
-        }
+//        Optional<UserDetails> existingUser = userRepository.findById(userDetails.getId());
+//        if (existingUser.isPresent()) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with '" + userDetails.getId() + "' already exists.");
+//        }
 
         // Validate mobile number length
-        if (userDetails.getMobno().length() != 10) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mobile number must be exactly 10 digits long.");
-        }
+//        if (userDetails.getMobno().length() != 10) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mobile number must be exactly 10 digits long.");
+//        }
 
         try {
             userRepository.save(userDetails);
