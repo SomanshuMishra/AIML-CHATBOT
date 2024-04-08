@@ -13,10 +13,10 @@ public class AiMlPolestarApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AiMlPolestarApplication.class, args);
 	}
-	
+
 	@RequestMapping(value = "/")
 	public String hello() {
-	   return "Welcome to AIML Vaiday Backend Universe";
+		return "Welcome to AIML Vaiday Backend Universe";
 	}
 
 }

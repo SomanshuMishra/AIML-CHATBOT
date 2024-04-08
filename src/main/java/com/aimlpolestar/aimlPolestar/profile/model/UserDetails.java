@@ -28,8 +28,6 @@ public class UserDetails {
     private String relation;
 
 
-
-
     private String parent_user;
 
     @Column(name = "mobno", unique = true)

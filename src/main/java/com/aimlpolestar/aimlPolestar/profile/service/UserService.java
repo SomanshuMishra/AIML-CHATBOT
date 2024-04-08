@@ -24,15 +24,15 @@ public class UserService {
     // Save the user with validation for existing user (using mobno) and mobile number length
     public ResponseEntity<String> signUpUser(UserDetails userDetails) {
         // Check for existing user by id before saving
-//        Optional<UserDetails> existingUser = userRepository.findById(userDetails.getId());
-//        if (existingUser.isPresent()) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with '" + userDetails.getId() + "' already exists.");
-//        }
+        Optional<UserDetails> existingUser = userRepository.findById(userDetails.getId());
+        if (existingUser.isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with '" + userDetails.getId() + "' already exists.");
+        }
 
-        // Validate mobile number length
-//        if (userDetails.getMobno().length() != 10) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mobile number must be exactly 10 digits long.");
-//        }
+//         Validate mobile number length
+        if (userDetails.getMobno().length() != 10) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mobile number must be exactly 10 digits long.");
+        }
 
         try {
             userRepository.save(userDetails);
@@ -49,15 +49,15 @@ public class UserService {
     }
 
     // find by id
-    public Optional<UserDetails> findById (String id) {
+    public Optional<UserDetails> findById (int id) {
         return userRepository.findById(id);
     }
 
 
     // update the user details
-    public ResponseEntity<String> updateUser(String id, UserDetails userDetails) {
+    public ResponseEntity<String> updateUser(String primaryUser, UserDetails userDetails) {
         // check if the user exists or not
-        Optional<UserDetails> existingUser = userRepository.findById(id);
+        Optional<UserDetails> existingUser = userRepository.findByPrimaryuser(primaryUser);
 
         // if present
         if (existingUser.isPresent()) {
@@ -79,14 +79,14 @@ public class UserService {
             return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
         }
     }
-    public String changeActiveStatusById(String id, String newActiveStatus) {
-        UserDetails userDetails = userRepository.findById(id).orElse(null);
+    public String changeActiveStatusById(String primaryUser, String newActiveStatus) {
+        UserDetails userDetails = userRepository.findByPrimaryuser(primaryUser).orElse(null);
         if (userDetails != null) {
             userDetails.setActive(newActiveStatus);
             userRepository.save(userDetails);
-            return "Active status updated successfully for user with id: " + id;
+            return "Active status updated successfully for user with primary user id: " + primaryUser;
         } else {
-            return "User with id: " + id + " not found";
+            return "User with primary user id: " + primaryUser + " not found";
         }
     }
 
