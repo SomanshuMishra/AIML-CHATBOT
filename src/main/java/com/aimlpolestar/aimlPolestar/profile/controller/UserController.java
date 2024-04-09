@@ -30,29 +30,28 @@ public class UserController {
         return userService.findAllUserDetails();
     }
 
-    @GetMapping("/id/{id}")
-    public ResponseEntity<UserDetails> findById(@PathVariable int id) {
-        Optional<UserDetails> userById = userService.findById(id);
-        if (userById.isPresent()) {
-            return new ResponseEntity<UserDetails>(userById.get(), HttpStatus.OK);
+    @GetMapping("/primaryuser/{primaryUser}")
+    public ResponseEntity<UserDetails> findById(@PathVariable String primaryUser) {
+        Optional<UserDetails> userByPrimaryUser = userService.findByPrimaryuser(primaryUser);
+        if (userByPrimaryUser.isPresent()) {
+            return new ResponseEntity<UserDetails>(userByPrimaryUser.get(), HttpStatus.OK);
         }
         return new ResponseEntity<UserDetails>(HttpStatus.NOT_FOUND);
     }
 
-//     update the user
-     @PutMapping("/update/{primaryUser}")    // primary_user
-     public ResponseEntity<String> updateDetails(@PathVariable String primaryUser,
-     @RequestBody UserDetails userDetails) {
-         ResponseEntity<String> response = userService.updateUser(primaryUser, userDetails);
-         return response;
-     }
+    // update the user
+    @PutMapping("/update/{primaryUser}") // primary_user
+    public ResponseEntity<String> updateDetails(@PathVariable String primaryUser,
+            @RequestBody UserDetails userDetails) {
+        ResponseEntity<String> response = userService.updateUser(primaryUser, userDetails);
+        return response;
+    }
 
-     @PutMapping("/change_active_status")   // through primary_user
-     public ResponseEntity<String> changeActiveStatusById(@RequestBody UserDetails
-     userDetails) {
-     String message = userService.changeActiveStatusById(userDetails.getPrimaryuser(),
-     userDetails.getActive());
-     return ResponseEntity.ok(message);
-     }
+    @PutMapping("/change_active_status") // through primary_user
+    public ResponseEntity<String> changeActiveStatusById(@RequestBody UserDetails userDetails) {
+        String message = userService.changeActiveStatusById(userDetails.getPrimaryuser(),
+                userDetails.getActive());
+        return ResponseEntity.ok(message);
+    }
 
 }

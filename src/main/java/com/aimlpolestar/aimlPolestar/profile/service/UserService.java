@@ -52,6 +52,10 @@ public class UserService {
     public Optional<UserDetails> findById (int id) {
         return userRepository.findById(id);
     }
+    public Optional<UserDetails> findByPrimaryuser (String primaryUser) {
+        return userRepository.findByPrimaryuser(primaryUser);
+    }
+
 
 
     // update the user details

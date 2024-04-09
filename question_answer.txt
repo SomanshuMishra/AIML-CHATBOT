@@ -1,0 +1,14 @@
+{
+    "input_query": "what's my name"
+}::{"answer":" I apologize, but as an AI assistant without direct access to you, I do not actually know your name."}
+
+{
+    "input_query": "remember my name is Sourav"
+}::{"answer":" Nice to meet you Sourav. As a medical expert, my role is to provide factual information to health queries, while avoiding specific medical advice. How may I assist you today?"}{
+    "input_query": "tell me about cancer"
+}::{"answer":" Cancer is a disease characterized by the uncontrolled growth and spread of abnormal cells. If the spread is not controlled, it can result in death. Cancer cells can invade and grow in other tissues, forming new tumors. There are over 100 different types of cancer, categorized by the type of cell or organ originally affected. Some major types include lung cancer, breast cancer, skin cancer, prostate cancer, colon cancer, leukemia, lymphoma, melanoma, and sarcoma. The causes of cancer are multifaceted but include both external factors like tobacco use, infectious agents, and internal factors like genetic mutations, hormones, and immune conditions. Early detection through screening can help diagnose some cancers at an earlier stage and improve chances of successful treatment. Common treatments include surgery, radiation therapy, chemotherapy, hormone therapy, immunotherapy, and targeted drug therapies. Overall survival depends on the cancer type and stage at detection. While there is no universal cure for all cancers, ongoing research continues to provide new insights, early detection methods, and more effective treatments."}
+
+{
+    "input_query": "cancer ?"
+}::{"answer":" Cancer is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body. Some key facts:\n\n- Cancers are often named for the organ or type of cell affected. common cancers include lung, breast, colon, prostate cancers. \n\n- Cancer develops when mutations accumulate in cell DNA, causing uncontrolled cell division and growth.\n\n- Cancer cells can spread locally through tissue invasion, or travel through blood and lymph systems to distant areas (metastasis).\n\n- Risk factors may include tobacco use, infections, family history, radiation exposure, poor diet/obesity, lack of exercise. \n\n- Symptoms vary by cancer type and stage. Often there are no signs until advanced stages. \n\n- Diagnosis involves medical history, physical exam, imaging tests and biopsy of suspicious tissue. \n\n- Treatment options include surgery, radiation therapy, chemotherapy, immunotherapy, targeted therapy or palliative care based on cancer type and stage. \n\n- Outlook depends on several factors but generally the earlier cancer is detected, the better the chances of effective treatment and recovery."}
+
