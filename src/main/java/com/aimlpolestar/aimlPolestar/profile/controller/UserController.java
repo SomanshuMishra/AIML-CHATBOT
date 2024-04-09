@@ -30,7 +30,7 @@ public class UserController {
         return userService.findAllUserDetails();
     }
 
-    @GetMapping("/primaryuser/{primaryUser}")
+    @GetMapping("/id/{primaryUser}")
     public ResponseEntity<UserDetails> findById(@PathVariable String primaryUser) {
         Optional<UserDetails> userByPrimaryUser = userService.findByPrimaryuser(primaryUser);
         if (userByPrimaryUser.isPresent()) {
